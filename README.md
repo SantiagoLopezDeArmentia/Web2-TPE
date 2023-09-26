@@ -15,3 +15,6 @@
 
 - Diagrama Entidad-Relacion
 
+
+  ![Diagrama Entidad-Relacion](diagrama-entidad-relacion.jpg)
+
