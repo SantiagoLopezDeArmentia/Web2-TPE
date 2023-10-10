@@ -26,7 +26,7 @@
 
             // Validar datos ingresados por el usuario
             if (empty($user) || empty($password)) {
-                // mostrar error
+                $this->authview->showLogin('Faltan completar datos');
                 return;
             }
 
@@ -36,10 +36,23 @@
             // Autenticar usuario
             if ($userData && password_verify($password, $userData->contrasenia)) {
                 // Rederigir a la pagina principal del sitio
-                echo "login";
+               // echo "login";
                 //header('Location: '. BASE_URL);
+                AuthHelper::login($userData);
+            
+                header('Location: ' . BASE_URL);
+            } else {
+                $this->authview->showLogin('Usuario inválido');
             }
         }
+    
+        public function logout() {
+            AuthHelper::logout();
+            header('Location: ' . BASE_URL);    
+        }
+    
     }
+        
+    
 
 ?>
