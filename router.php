@@ -19,6 +19,8 @@
             $controller->showCard();
             break;
         case 'fabricantes':
+            $controller = new FabricanteController();
+            $controller->showCard();
             break;
         case 'login':
             $controller = new AuthController();
