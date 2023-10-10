@@ -8,6 +8,13 @@
 
         }
 
+       /* public function showProductsbyFabricante($products){
+            
+            showProduct($products){
+
+            }
+        }  */
+
 
         public function showProduct($products) {
             //require_once './templates/card.template.phtml';

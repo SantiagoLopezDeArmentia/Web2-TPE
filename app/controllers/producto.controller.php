@@ -35,6 +35,13 @@
             $this->productoView->showAddProduct();
         }
 
+        /*public function showProductByFabricante($id_fabricante){
+            $products = $this->productoModel->getProductsbyFabricante($id_fabricante)
+        
+            
+            $this->productoView->showProducts($products);
+        }  */
+
     }
 
 

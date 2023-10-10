@@ -26,6 +26,14 @@
             return $products;
         }
 
+       /* function getProductsbyFabricante($id_fabricante){
+            $query = $this->dataBase->prepare('SELECT * FROM productos WHERE id_fabricante = ? ');
+            $query->execute($id_fabricante);
+
+            $products = $query->fetchAll(PDO::FETCH_OBJ);
+            return $products;
+        }  */
+
         function insertProduct() {
             $productName = $_POST['name'];
             $productDescription = $_POST['description'];
