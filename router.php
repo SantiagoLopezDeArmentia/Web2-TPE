@@ -34,6 +34,9 @@
             $controller = new ProductoController();
             $controller->showAddProduct();
             break;
+        case 'auth':
+            $controller =  new AuthController();
+            $controller->auth();
         }
 
 ?>

@@ -27,10 +27,15 @@
         }
 
         function insertProduct() {
+            $productName = $_POST['name'];
+            $productDescription = $_POST['description'];
+            $productPrice = $_POST['price'];
+            $productCurrency = $_POST['currency'];
+
             $query = $this->dataBase->prepare('INSERT INTO productos (nombre, descripcion,
             id_fabricante, ruta_imagen, precio, moneda) VALUES (?, ?, ?, ?, ?, ?)');
 
-            $query->execute();
+            $query->execute([$productName, $productDescription, 'fabricante', 'ruta_img', $productPrice, $productCurrency]);
         }
 
         function removeProduct($id) {

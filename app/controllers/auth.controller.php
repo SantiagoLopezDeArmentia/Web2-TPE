@@ -36,7 +36,8 @@
             // Autenticar usuario
             if ($userData && password_verify($password, $userData->contrasenia)) {
                 // Rederigir a la pagina principal del sitio
-                header('Location: '. BASE_URL);
+                echo "login";
+                //header('Location: '. BASE_URL);
             }
         }
     }
