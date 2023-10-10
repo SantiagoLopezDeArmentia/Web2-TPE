@@ -1,0 +1,12 @@
+<?php require 'templates/header.template.phtml'; ?>
+
+<div class="row row-cols-1 row-cols-md-2 g-0 p-5">
+    <?php for($i=0; $i < count($products); $i++ ) {
+        $product = $products[$i];
+        require 'templates/card.template.phtml' ?>
+    <?php } ?>
+</div>
+
+<?php require_once 'templates/modal.template.phtml' ?>
+
+<?php require 'templates/footer.template.phtml'; ?>
