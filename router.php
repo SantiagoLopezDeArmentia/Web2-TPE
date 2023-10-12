@@ -4,7 +4,7 @@
 
     define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/' );
 
-    $parametro = 'home';
+    $parametro = 'productos';
 
     if (!empty($_GET['action']) && isset($_GET['action'])) {
         $parametro = $_GET['action'];

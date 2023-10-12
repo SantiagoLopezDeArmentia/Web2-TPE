@@ -12,6 +12,7 @@
         // Constructor
 
         public function __construct() {
+            AuthHelper::verify();
             $this->productoModel = new ProductoModel();
             $this->productoView = new ProductoView();
         }

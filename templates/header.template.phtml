@@ -25,7 +25,7 @@
                     </li>
 
                     <!--  Si la sesion no existe, se visualiza el boton de login, caso contrario mostrar 'Agregar producto / Cerrar sesion'-->
-                    <?php if (empty($_SESSION['user_id'])) :?>
+                    <?php if (!isset($_SESSION['USER_ID'])) :?>
                         <li class="nav-item">
                             <a class="nav-link" href="login">Iniciar Sesión</a>
                         </li>
