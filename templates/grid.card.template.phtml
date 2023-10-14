@@ -1,5 +1,14 @@
 <?php require 'templates/header.template.phtml'; ?>
 
+<div class="btn-group">
+  <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">Fabricantes</button>
+  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+    <?php require_once './templates/option.select.fab.home.template.phtml' ?>
+  </ul>
+</div>
+
+
+
 <div class="row row-cols-1 row-cols-md-2 g-0 p-5">
     <?php for($i=0; $i < count($products); $i++ ) {
         $product = $products[$i];
@@ -9,4 +18,4 @@
 
 <?php require_once 'templates/modal.template.phtml' ?>
 
-<?php require 'templates/footer.template.phtml'; ?>
+<?php require 'templates/footer.template.phtml' ?>

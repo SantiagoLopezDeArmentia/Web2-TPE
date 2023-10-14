@@ -1,0 +1,14 @@
+
+
+<?php require 'templates/header.template.phtml'; ?>
+
+<a href="fabricantes/agregar" class="btn btn-primary" >Agregar</a>
+
+<div class="row row-cols-1 row-cols-md-2 g-0 p-5">
+    <?php for($i=0; $i < count($fabricantes); $i++ ) {
+        $fabricante = $fabricantes[$i];
+        require './templates/card.fabricante.template.phtml' ?>
+    <?php } ?>
+</div>
+
+<?php require './templates/footer.template.phtml'; ?>

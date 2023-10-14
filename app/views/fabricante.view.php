@@ -6,7 +6,7 @@
 
         public function showAllFabricantes($fabricantes) {
                 //require_once './templates/card.template.phtml';
-                require_once './templates/grid.card.template.phtml';
+                require_once './templates/grid.card.fabricantes.template.phtml';
             }
         
 

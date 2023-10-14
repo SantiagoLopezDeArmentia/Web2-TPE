@@ -1,19 +1,20 @@
 
+<?php $id_producto = $product->id_producto ?>
 <div class="col">
-    <!--<div class="card">-->
+
     <div class="card border-primary mb-1" style="max-width: 85%;  height:50%;">
         <img src=<?= $product->ruta_imagen ?> class="card-img-top" alt="..." id="img">
         <div class="card-body">
             <h5 class="card-title"><?= $product->nombre ?></h5>
             <p class="card-text">Precio: <?= $product->precio ?> </p>
             <p class="card-text">Moneda: <?= $product->moneda ?> </p>
-            <a href="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Mas información</a>
+            <!--<a href="informacion-adicional/<?= $id_producto ?>" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Mas información</a>-->
+            <a href="informacion-adicional/<?= $id_producto ?>" class="btn btn-primary" >Mas información</a>
             
             <!--  Si la sesion no existe, se visualiza el boton  de ' [ editar / remover ] '-->
-            <!--if(!empty($_SESSION['user_id']) && $_SESSION['user_id'])-->
             <?php if(isset($_SESSION['USER_ID'])): ?>
-                <a href="#" class="btn btn-warning">Editar</a>
-                <a href="#" class="btn btn-danger">Remover</a>
+                <a href="editar/<?= $id_producto ?>" class="btn btn-warning">Editar</a>
+                <a href="remover/<?= $id_producto ?>" class="btn btn-danger">Remover</a>
             <?php endif?>
 
             

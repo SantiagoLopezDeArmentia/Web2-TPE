@@ -1,0 +1,44 @@
+<?php require './templates/header.template.phtml'?>
+
+<form action="addProductDB" method="post" class="row g-0 p-5" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name='name' value='<?= $product->nombre ?>'>
+    </div>
+    
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='description'><?= $product->descripcion ?></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Precio</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name='price' value='<?= $product->precio ?>'>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Moneda</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name='currency' value='<?= $product->moneda ?>' >
+    </div>
+
+    <div class="mb-3">
+        <select class="form-select" aria-label="Default select example" name='fabricante' require>
+            <option selected>Seleccionar fabricante</option>
+            <?php require_once './templates/option.select.fab.add.prod.template.phtml' ?>
+        </select>
+    </div>
+    
+
+    <div class="mb-3">
+        <label for="formFileSm" class="form-label">Agregar imagen</label>
+        <input class="form-control form-control-sm" id="formFileSm" type="file" name='input_name' value='<?= $product->ruta_imagen ?>'>
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Confirmar</button>
+        <a href='productos'><button type="button" class="btn btn-danger mb-3">Cancelar</button></a>
+    </div>
+
+</form>
+
+<?php require './templates/footer.template.phtml'?>

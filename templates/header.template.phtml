@@ -15,23 +15,21 @@
             <div class="container-fluid">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Principal</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="productos">Productos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Fabricantes</a>
                     </li>
 
                     <!--  Si la sesion no existe, se visualiza el boton de login, caso contrario mostrar 'Agregar producto / Cerrar sesion'-->
                     <?php if (!isset($_SESSION['USER_ID'])) :?>
                         <li class="nav-item">
-                            <a class="nav-link" href="login">Iniciar Sesión</a>
+                            <a class="nav-link" href="login">Iniciar sesión</a>
                         </li>
                     <?php else :?>
                         <li class="nav-item">
                             <a class="nav-link" href="addProduct">Agregar producto</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="fabricantes">Fabricantes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link logout" href="logout">Cerrar sesión</a>

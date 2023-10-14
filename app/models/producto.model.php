@@ -26,24 +26,31 @@
             return $products;
         }
 
-       /* function getProductsbyFabricante($id_fabricante){
+
+        public function getProductByID($id) {
+            $query = $this->dataBase->prepare('SELECT * FROM productos WHERE id_producto = ?');
+            $query->execute([$id]);
+            return $query->fetch(PDO::FETCH_OBJ);
+        }
+        
+        /* Obtener productos por fabricante. */
+        public function getProductsbyFabricante($id_fabricante){
             $query = $this->dataBase->prepare('SELECT * FROM productos WHERE id_fabricante = ? ');
-            $query->execute($id_fabricante);
+            $query->execute([$id_fabricante]);
 
             $products = $query->fetchAll(PDO::FETCH_OBJ);
             return $products;
-        }  */
+        } 
 
-        function insertProduct() {
-            $productName = $_POST['name'];
-            $productDescription = $_POST['description'];
-            $productPrice = $_POST['price'];
-            $productCurrency = $_POST['currency'];
+        function insertProduct($productName, $productDescription, $productMaker, $fullPathFile, $productPrice, $productCurrency) {
+            
+
+            /* Validar que se contengan todos los datos necesarios para cargar el producto */
 
             $query = $this->dataBase->prepare('INSERT INTO productos (nombre, descripcion,
             id_fabricante, ruta_imagen, precio, moneda) VALUES (?, ?, ?, ?, ?, ?)');
 
-            $query->execute([$productName, $productDescription, 'fabricante', 'ruta_img', $productPrice, $productCurrency]);
+            $query->execute([$productName, $productDescription, $productMaker, $fullPathFile, $productPrice, $productCurrency]);
         }
 
         function removeProduct($id) {

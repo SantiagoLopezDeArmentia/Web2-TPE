@@ -1,6 +1,6 @@
 <?php require './templates/header.template.phtml'?>
 
-<form action="" method="post" class="row g-0 p-5">
+<form action="addProductDB" method="post" class="row g-0 p-5" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nombre</label>
         <input type="text" class="form-control" id="exampleFormControlInput1" name='name'>
@@ -22,12 +22,21 @@
     </div>
 
     <div class="mb-3">
-        <label for="formFileSm" class="form-label">Small file input example</label>
-        <input class="form-control form-control-sm" id="formFileSm" type="file">
+        <select class="form-select" aria-label="Default select example" name='fabricante' require>
+            <option selected>Seleccionar fabricante</option>
+            <?php require_once './templates/option.select.fab.add.prod.template.phtml' ?>
+        </select>
+    </div>
+    
+
+    <div class="mb-3">
+        <label for="formFileSm" class="form-label">Agregar imagen</label>
+        <input class="form-control form-control-sm" id="formFileSm" type="file" name='input_name'>
     </div>
 
     <div class="col-auto">
         <button type="submit" class="btn btn-primary mb-3">Confirmar</button>
+        <a href='productos'><button type="button" class="btn btn-danger mb-3">Cancelar</button></a>
     </div>
 
 </form>

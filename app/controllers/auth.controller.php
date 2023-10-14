@@ -21,9 +21,13 @@
             $this->authview->showLogin();
         }
 
+        /* Autenticar usuario */
         public function auth() {
-            $user = $_POST['user'];
-            $password = $_POST['password'];
+            if ($_POST){
+                $user = $_POST['user'];
+                $password = $_POST['password'];
+            }
+            
 
             // Validar datos ingresados por el usuario
             if (empty($user) || empty($password)) {
@@ -33,14 +37,15 @@
 
             // Obtener los datos del usuario
             $userData = $this->userModel->getUser($user);
-
+            
 
             // Autenticar usuario
             if ($userData && password_verify($password, $userData->contrasenia)) {
-                
                 // Rederigir a la pagina principal del sitio
                 AuthHelper::login($userData);
+                //AuthHelper::verify();
                 header('Location: ' . BASE_URL);
+                
             } else {
                 $this->authview->showLogin('Usuario inválido');
             }

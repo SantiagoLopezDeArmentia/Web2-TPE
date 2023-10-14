@@ -12,6 +12,8 @@
         // Constructor
 
         public function __construct() {
+
+            AuthHelper::init();
             $this->fabricanteModel = new FabricanteModel();
             $this->fabricanteView = new FabricanteView();
         }
@@ -23,17 +25,25 @@
         }
 
         public function showCard() {
-            $fabriantes = $this->fabricanteModel->getAllFabricantes();
+            $fabricantes = $this->fabricanteModel->getAllFabricantes();
             $this->fabricanteView->showAllFabricantes($fabricantes);
         }
 
+        /*
         public function showModal() {
             $this->fabricanteView->showModal();
         }
 
         public function showAddFabricante() {
             $this->fabricanteView->showAddProduct();
+        }*/
+
+        public function removeFabricante($id) {
+            $this->fabricanteModel->deleteFabricanteByID($id);
+
         }
+
+
 
     }
 

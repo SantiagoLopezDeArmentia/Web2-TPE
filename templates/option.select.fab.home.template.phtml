@@ -1,0 +1,6 @@
+
+<?php foreach($fabricantes as $fabricante): 
+    $nombreFabricante = $fabricante->fabricante?>
+    <li><a class="dropdown-item" href='productos/<?= $nombreFabricante?>'><?= $nombreFabricante ?></a></li>
+<?php endforeach ?>
+

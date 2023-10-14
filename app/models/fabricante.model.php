@@ -25,6 +25,22 @@
             $fabricantes = $query->fetchAll(PDO::FETCH_OBJ);
             return $fabricantes;
         }
+
+        function getFabricanteByName($fabricante){
+            $query = $this->dataBase->prepare('SELECT * FROM fabricantes WHERE fabricante = ?');
+            $query->execute([$fabricante]);
+
+            $fabricante = $query->fetch(PDO::FETCH_OBJ);
+            return $fabricante;
+        }
+
+        public function deleteFabricanteByID($id) {
+            $query = $this->dataBase->prepare('DELETE FROM fabricantes WHERE id_fabricante = ?');
+            $query->execute([$id]);
+        }
+
+
+
 /*   Ver si se puede
         function insertFabricante() {
             $fabricanteName = $_POST['nombre'];

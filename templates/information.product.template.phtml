@@ -1,0 +1,20 @@
+<?php require 'templates/header.template.phtml'; ?>
+
+<div class="mt-5 w-25 mx-auto" >
+    <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label"><?= $product->nombre ?></label>
+    <img src=<?= $product->ruta_imagen ?> class="card-img-top" alt="..." id="img">
+    </div>
+    <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label"><?= $product->descripcion ?></label>
+    </div>
+    <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label"><?= $product->precio ?></label>
+    </div>
+    <div class="mb-3">
+    <label for="formGroupExampleInput2" class="form-label"><?= $product->moneda ?></label>
+    </div>
+        
+</div>
+
+<?php require 'templates/footer.template.phtml'; ?>
