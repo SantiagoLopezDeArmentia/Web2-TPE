@@ -26,20 +26,30 @@
             $controller->showAdditionalInformation($valueParameter);
             break;
         case 'fabricantes':
-            $controller = new FabricanteController();
-            $controller->showCard();
             switch($valueParameter) {
+                default:
+                    $controller = new FabricanteController();
+                    $controller->showCard();
+                    break;
                 case 'agregar':
                     $controller = new FabricanteController();
-                    // logica
+                    $controller->showAddFabricante();
                     break;
                 case 'editar':
                     $controller = new FabricanteController();
-                    //logica
+                    $controller->editFabricante($arrParams[2]);
                     break;
                 case 'informacion-adicional':
                     $controller = new FabricanteController();
                     //logica
+                    break;
+                case 'confirmar-add-fabricante':
+                    $controller = new FabricanteController();
+                    $controller->insertFabricante();
+                    break;
+                case 'confirmar-editar-fabricante':
+                    $controller = new FabricanteController();
+                    $controller->updateFabricante($arrParams[2]);
                     break;
             }
             break;
@@ -72,6 +82,7 @@
             $controller = new ProductoController();
             $controller->editProduct($valueParameter);
             break;
+        /* Alta - Baja - Modificacion Fabricante */
         case 'removerFabricante':
             $controller = new FabricanteController();
             $controller->removeFabricante($valueParameter);

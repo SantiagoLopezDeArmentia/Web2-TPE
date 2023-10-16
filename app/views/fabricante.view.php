@@ -18,7 +18,11 @@
         }
 
         public function showAddFabricante() {
-            require_once './templates/add.product.template.phtml';
+            require_once './templates/form.add.fabricante.template.phtml';
+        }
+
+        public function showEditFabricante($fabricante) {
+            require_once './templates/form.edit.fabricante.template.phtml';
         }
     }
 

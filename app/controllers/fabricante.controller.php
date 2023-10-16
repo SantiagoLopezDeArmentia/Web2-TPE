@@ -29,21 +29,32 @@
             $this->fabricanteView->showAllFabricantes($fabricantes);
         }
 
-        /*
-        public function showModal() {
-            $this->fabricanteView->showModal();
-        }
-
         public function showAddFabricante() {
-            $this->fabricanteView->showAddProduct();
-        }*/
+            $this->fabricanteView->showAddFabricante();
+        }
 
         public function removeFabricante($id) {
             $this->fabricanteModel->deleteFabricanteByID($id);
 
         }
 
+        public function insertFabricante() {
+            $this->fabricanteModel->insertFabricante();
+            NavHelper::NavHome();
+        }
 
+        public function editFabricante($id) {
+            $fabricante = $this->fabricanteModel->getFabricanteByID($id);
+            $fabricante->id_fabricante = $id;
+            if ($fabricante) {
+                $this->fabricanteView->showEditFabricante($fabricante);
+            }
+        }
+
+        public function updateFabricante($id) {
+            $this->fabricanteModel->updateFabricante($id);
+            NavHelper::NavHome();
+        }
 
     }
 

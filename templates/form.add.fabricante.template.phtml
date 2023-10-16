@@ -1,0 +1,26 @@
+<?php require './templates/header.template.phtml'?>
+
+<form action="confirmar-add-fabricante" method="post" class="row g-0 p-5" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Fabricante</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name='fabricante'>
+    </div>
+    
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Pais origen</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name='pais-origen'></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Contacto</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name='contacto'>
+    </div>
+
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Confirmar</button>
+        <a href='productos'><button type="button" class="btn btn-danger mb-3">Cancelar</button></a>
+    </div>
+
+</form>
+
+<?php require './templates/footer.template.phtml'?>

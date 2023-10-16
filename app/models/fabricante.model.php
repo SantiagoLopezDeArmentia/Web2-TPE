@@ -34,6 +34,12 @@
             return $fabricante;
         }
 
+        public function getFabricanteByID($id) {
+            $query = $this->dataBase->prepare('SELECT * FROM fabricantes WHERE id_fabricante = ?');
+            $query->execute([$id]);
+            return $query->fetch(PDO::FETCH_OBJ);
+        }
+
         public function deleteFabricanteByID($id) {
             $query = $this->dataBase->prepare('DELETE FROM fabricantes WHERE id_fabricante = ?');
             $query->execute([$id]);
@@ -41,25 +47,37 @@
 
 
 
-/*   Ver si se puede
-        function insertFabricante() {
-            $fabricanteName = $_POST['nombre'];
-            $fabricantePais = $_POST['pais_origen'];
+        public function insertFabricante() {
+            $fabricanteName = $_POST['fabricante'];
+            $fabricantePais = $_POST['pais-origen'];
             $fabricanteContacto = $_POST['contacto'];
           
+            if (isset($fabricanteName) && isset($fabricantePais) && isset($fabricanteContacto)) {
+                $query = $this->dataBase->prepare('INSERT INTO fabricantes (fabricante, pais_origen,
+                contacto) VALUES (?, ?, ?)');
+                $query->execute([$fabricanteName, $fabricantePais, $fabricanteContacto]);
+            } else {
+                // mostrar error
+            }
 
-            $query = $this->dataBase->prepare('INSERT INTO fabricantes (fabricante, pais_origen,
-            contacto) VALUES (?, ?, ?)');
-
-            $query->execute([$fabricanteName, $fabricantePais, $fabricanteContacto]);
+            
         }
 
-        function removeFabricante($id) {
-            $query = $this->dataBase->prepare('DELETE FROM fabricantes WHERE id_fabricante = ?');
-            $query->execute([$id]);
+        public function updateFabricante($id) {
+            $fabricanteName = $_POST['fabricante'];
+            $fabricanteContacto = $_POST['contacto'];
+            $fabricantePais = $_POST['pais-origen'];
+            $fabricanteID = $id;
+
+            
+
+            $query = $this->dataBase->prepare('UPDATE fabricantes 
+                                            SET fabricante = ?, contacto = ?, pais_origen = ?  
+                                            WHERE id_fabricante = ?');
+            $query->execute([$fabricanteName, $fabricanteContacto, $fabricantePais, $fabricanteID]);
+
         }
 
-*/
 
         
     }

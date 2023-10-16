@@ -10,7 +10,7 @@
             
             <!--  Si la sesion no existe, se visualiza el boton  de ' [ editar / remover ] '-->
             <?php if(isset($_SESSION['USER_ID'])): ?>
-                <a href="editar/<?= $id_fabricante ?>" class="btn btn-warning">Editar</a>
+                <a href="fabricantes/editar/<?= $id_fabricante ?>" class="btn btn-warning">Editar</a>
                 <a href="removerFabricante/<?= $id_fabricante ?>" class="btn btn-danger">Remover</a>
             <?php endif?>
 
