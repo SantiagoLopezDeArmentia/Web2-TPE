@@ -5,7 +5,7 @@
 
 
         public function showProduct($products, $fabricantes) {
-            require_once './templates/grid.card.template.phtml';
+            require_once './templates/grid.card.product.template.phtml';
         }
 
         public function showModal($product) {
