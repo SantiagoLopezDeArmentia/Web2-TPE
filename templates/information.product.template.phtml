@@ -1,20 +1,29 @@
 <?php require 'templates/header.template.phtml'; ?>
 
-<div class="mt-5 w-25 mx-auto" >
+<div class="card border-primary mb-1 mt-5 w-25 mx-auto p-5 pb-2" >
     <div class="mb-3">
-    <label for="formGroupExampleInput" class="form-label"><?= $product->nombre ?></label>
-    <img src=<?= $product->ruta_imagen ?> class="card-img-top" alt="..." id="img">
+        <label for="formGroupExampleInput" class="form-label">Producto <?= $product->nombre ?></label>
+        <img src=<?= $product->ruta_imagen ?> class="card-img-top" alt="..." id="img">
+    </div>
+
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Descripcion</label>
     </div>
     <div class="mb-3">
-    <label for="formGroupExampleInput2" class="form-label"><?= $product->descripcion ?></label>
+        <label for="formGroupExampleInput2" class="form-label"><?= $product->descripcion ?></label>
     </div>
     <div class="mb-3">
-    <label for="formGroupExampleInput2" class="form-label"><?= $product->precio ?></label>
+        <label for="formGroupExampleInput2" class="form-label">Precio: <?= $product->precio ?></label>
     </div>
     <div class="mb-3">
-    <label for="formGroupExampleInput2" class="form-label"><?= $product->moneda ?></label>
+        <label for="formGroupExampleInput2" class="form-label">Moneda: <?= $product->moneda ?></label>
+    </div>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a href='productos'><button type="button" class="btn btn-secondary mb-3">Atras</button></a>
     </div>
         
 </div>
 
 <?php require 'templates/footer.template.phtml'; ?>
+

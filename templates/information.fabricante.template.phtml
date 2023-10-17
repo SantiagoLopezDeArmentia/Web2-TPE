@@ -1,0 +1,22 @@
+<?php require 'templates/header.template.phtml'; ?>
+
+<div class="card border-primary mb-1 mt-5 w-25 mx-auto p-5 pb-2" >
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Fabricante: </label>
+        <label for="formGroupExampleInput" class="form-label"><?= $fabricante->fabricante ?></label>
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Contacto: </label>
+        <label for="formGroupExampleInput2" class="form-label"><?= $fabricante->contacto ?></label>
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Pais de origen: </label>
+        <label for="formGroupExampleInput2" class="form-label"><?= $fabricante->pais_origen ?></label>
+    </div>
+    
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a href='fabricantes'><button type="button" class="btn btn-secondary mb-3">Atras</button></a>
+    </div>
+</div>
+
+<?php require 'templates/footer.template.phtml'; ?>

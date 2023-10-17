@@ -1,6 +1,6 @@
 <?php require './templates/header.template.phtml'?>
 
-<form action="addProductDB" method="post" class="row g-0 p-5" enctype="multipart/form-data">
+<form action="productos/addProductDB" method="post" class="row g-0 p-5" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nombre</label>
         <input type="text" class="form-control" id="exampleFormControlInput1" name='name'>
@@ -23,7 +23,7 @@
 
     <div class="mb-3">
         <select class="form-select" aria-label="Default select example" name='fabricante' require>
-            <option selected>Seleccionar fabricante</option>
+            <option disabled selected>Seleccionar fabricante</option>
             <?php require_once './templates/option.select.fab.add.prod.template.phtml' ?>
         </select>
     </div>
@@ -40,5 +40,9 @@
     </div>
 
 </form>
+
+<div data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+</div>
 
 <?php require './templates/footer.template.phtml'?>

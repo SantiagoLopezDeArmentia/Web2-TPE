@@ -72,26 +72,13 @@
         /* Agregar un producto a la base de datos. */
         public function insertProduct() {
             
-            $productName = $_POST['name'];
-            $productDescription = $_POST['description'];
-            $productPrice = $_POST['price'];
-            $productCurrency = $_POST['currency'];
-            $fileName = $_FILES["input_name"]["name"];
-
-            $fabricanteID = $_POST['fabricante'];
-
-            
-
-            if (empty($productName) || empty($productDescription) || empty($productPrice || empty($productCurrency) || empty($_FILES))) {
-                // MOSTRAR ERROR
-                echo 'error en los datos';
-                return;
-            }
-
-            $fullPathFile = IMG_FOLDER_PATH . $fileName; // Armar ruta completa del archivo
-
-        
-            move_uploaded_file($_FILES["input_name"]["tmp_name"], $fullPathFile); // Mover archivo a la carpeta local del proyecto
+            $arrProductData = $this->manageProductPOST();
+            $productName = $arrProductData['name'];
+            $productDescription = $arrProductData['description'];
+            $productPrice = $arrProductData['price'];
+            $productCurrency = $arrProductData['currency'];
+            $fabricanteID = $arrProductData['id_fabricante'];
+            $fullPathFile = $arrProductData['path_img'];
 
             $this->productoModel->insertProduct($productName, $productDescription, $fabricanteID, $fullPathFile, $productPrice, $productCurrency);
 
@@ -108,12 +95,81 @@
         /* Editar un producto. */
         public function editProduct($id) {
             $product = $this->productoModel->getProductByID($id);
-            $this->productoView->showEditProduct($product);
+            $fabricantes = $this->getAllFabricantes();
+            $this->productoView->showEditProduct($product, $fabricantes);
+        }
+
+        /* Actualizar producto en la base de datos. */
+        public function updateProduct($id) {
+
+            $productName = $_POST['name'];
+            $productDescription = $_POST['description'];
+            $productPrice = $_POST['price'];
+            $productCurrency = $_POST['currency'];
+
+            if (empty($_POST['name']) || empty($_POST['description']) || empty($_POST['price']) || empty($_POST['currency'])) {
+                // MOSTRAR ERROR
+                $this->productoView->showError('No es posible agregar/actualizar el producto, este contiene campos vacios.');
+                die();
+            }
+            
+            // REVISAR ESTO -> VER DE USAR VARIABLE SESSION
+            $product = $this->productoModel->getProductByID($id);
+
+            if (strlen($_FILES['input_name']['tmp_name'])==0) {
+                $fullPathFile = $product->ruta_imagen;
+            } else {
+                /* Armar ruta completa del archivo */
+                $fullPathFile = IMG_FOLDER_PATH . $_FILES['input_name']['name']; 
+                /* Mover archivo a la carpeta local del proyecto */
+                move_uploaded_file($_FILES["input_name"]["tmp_name"], $fullPathFile); 
+            }
+
+            if (empty($_POST['fabricante'])) {
+                $fabricanteID = $product->id_fabricante;
+            } else {
+                $fabricanteID = $_POST['fabricante'];
+            }
+
+            $this->productoModel->updateProduct($productName, $productDescription,
+            $fabricanteID, $fullPathFile, $productPrice, $productCurrency, $id);
+            NavHelper::NavHome();
         }
 
 
-         /* ####################################################### */
+        /* ####################################################### */
 
+        private function manageProductPOST() {
+            
+            if (empty($_POST['name']) || empty($_POST['description']) || empty($_POST['price']) || empty($_POST['currency']) || strlen($_FILES['input_name']['tmp_name'])==0 || empty($_POST['fabricante'])) {
+                // MOSTRAR ERROR
+                $this->productoView->showError('No es posible agregar/actualizar el producto, este contiene campos vacios.');
+                die();
+            } else {
+                $productName = $_POST['name'];
+                $productDescription = $_POST['description'];
+                $productPrice = $_POST['price'];
+                $productCurrency = $_POST['currency'];
+                $fileName = $_FILES["input_name"]["name"];
+                $fabricanteID = $_POST['fabricante'];
+            }
+
+            /* Armar ruta completa del archivo */
+            $fullPathFile = IMG_FOLDER_PATH . $fileName; 
+
+            /* Mover archivo a la carpeta local del proyecto */
+            move_uploaded_file($_FILES["input_name"]["tmp_name"], $fullPathFile); 
+
+            /* Retornar todos los datos del producto. */
+            return ['name' => $productName,
+                    'description' => $productDescription,
+                    'price' => $productPrice,
+                    'currency' => $productCurrency,
+                    'id_fabricante' => $fabricanteID,
+                    'path_img' => $fullPathFile];
+        }
+
+        /* Obtener todos los fabricantes */
         private function getAllFabricantes() {
             require_once './app/models/fabricante.model.php';
             $fabricanteModel = new FabricanteModel();

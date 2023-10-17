@@ -3,16 +3,18 @@
 
 <div class="col">
 
-    <div class="card border-primary mb-1" style="max-width: 85%;  height:50%;">
+    <div class="card border-primary mb-1" style="max-width: 85%;  height:auto;">
         <div class="card-body">
             <h5 class="card-title"><?= $fabricante->fabricante ?></h5>
-            <a href="informacion-adicional/<?= $id_producto ?>" class="btn btn-primary" >Mas información</a>
-            
-            <!--  Si la sesion no existe, se visualiza el boton  de ' [ editar / remover ] '-->
-            <?php if(isset($_SESSION['USER_ID'])): ?>
-                <a href="fabricantes/editar/<?= $id_fabricante ?>" class="btn btn-warning">Editar</a>
-                <a href="removerFabricante/<?= $id_fabricante ?>" class="btn btn-danger">Remover</a>
-            <?php endif?>
+            <div class="card-body">
+                <a href="fabricantes/informacion-adicional/<?= $id_fabricante ?>" class="btn btn-primary" >Mas información</a>
+                
+                <!--  Si la sesion no existe, se visualiza el boton  de ' [ editar / remover ] '-->
+                <?php if(isset($_SESSION['USER_ID'])): ?>
+                    <a href="fabricantes/editar/<?= $id_fabricante ?>" class="btn btn-warning">Editar</a>
+                    <a href="fabricantes/removerFabricante/<?= $id_fabricante ?>" class="btn btn-danger">Remover</a>
+                <?php endif?>
+            </div>
 
             
         </div>

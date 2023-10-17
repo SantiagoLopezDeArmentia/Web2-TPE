@@ -19,7 +19,11 @@
 
         /* Obtener todos los productos */
         function getAllProducts(){
-            $query = $this->dataBase->prepare('SELECT * FROM productos');
+            //$query = $this->dataBase->prepare('SELECT * FROM productos');
+            $query = $this->dataBase->prepare('SELECT *, F.fabricante 
+                                            FROM productos P 
+                                            JOIN fabricantes F 
+                                            ON P.id_fabricante = F.id_fabricante');
             $query->execute();
 
             $products = $query->fetchAll(PDO::FETCH_OBJ);
@@ -35,7 +39,12 @@
         
         /* Obtener productos por fabricante. */
         public function getProductsbyFabricante($id_fabricante){
-            $query = $this->dataBase->prepare('SELECT * FROM productos WHERE id_fabricante = ? ');
+            //$query = $this->dataBase->prepare('SELECT * FROM productos WHERE id_fabricante = ? ');
+            $query = $this->dataBase->prepare('SELECT *, F.fabricante 
+                                            FROM productos P 
+                                            JOIN fabricantes F 
+                                            ON P.id_fabricante = F.id_fabricante
+                                            WHERE P.id_fabricante = ?');
             $query->execute([$id_fabricante]);
 
             $products = $query->fetchAll(PDO::FETCH_OBJ);
@@ -43,21 +52,29 @@
         } 
 
         function insertProduct($productName, $productDescription, $productMaker, $fullPathFile, $productPrice, $productCurrency) {
-            
-
             /* Validar que se contengan todos los datos necesarios para cargar el producto */
-
             $query = $this->dataBase->prepare('INSERT INTO productos (nombre, descripcion,
             id_fabricante, ruta_imagen, precio, moneda) VALUES (?, ?, ?, ?, ?, ?)');
 
             $query->execute([$productName, $productDescription, $productMaker, $fullPathFile, $productPrice, $productCurrency]);
         }
 
+        /* Remover producto de la base de datos mediante ID. */
         function removeProduct($id) {
             $query = $this->dataBase->prepare('DELETE FROM productos WHERE id_producto = ?');
             $query->execute([$id]);
         }
 
+        /* Actualizar informacion del producto en la base de datos. */
+        public function updateProduct($productName, $productDescription, $productMaker,
+                                    $fullPathFile, $productPrice, $productCurrency, $id) {
+            
+            $query = $this->dataBase->prepare('UPDATE productos 
+                                    SET nombre = ?, descripcion = ?, id_fabricante = ?,ruta_imagen = ?, precio = ?, moneda = ?
+                                    WHERE id_producto = ?');
+            $query->execute([$productName, $productDescription, $productMaker, $fullPathFile, $productPrice, $productCurrency, $id]);
+
+        }
 
 
         

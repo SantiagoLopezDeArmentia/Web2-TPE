@@ -5,51 +5,87 @@
 
     define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ":" . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/' );
 
-    $actionParameter = 'productos';
+    $areaParameter = 'productos';
+    $actionParameter = null;
     $valueParameter = null;
 
     if (!empty($_GET['action']) && isset($_GET['action'])) {
         $arrParams = explode('/', $_GET['action']);
-        $actionParameter = $arrParams[0];
+        $areaParameter = $arrParams[0];
         if (isset($arrParams[1])) {
-            $valueParameter = $arrParams[1];
+            $actionParameter = $arrParams[1];
+        }
+        if (isset($arrParams[2])) {
+            $valueParameter = $arrParams[2];
         }
     }
 
-    switch($actionParameter) {
+    switch($areaParameter) {
+        /* Productos */
         case 'productos':
-            $controller = new ProductoController();
-            $controller->showProducts($valueParameter);
+            switch($actionParameter) {
+                default:
+                    $controller = new ProductoController();
+                    $controller->showProducts($actionParameter);
+                    break;
+                case 'informacion-adicional':
+                    $controller = new ProductoController();
+                    $controller->showAdditionalInformation($valueParameter);
+                    break;
+                /* Alta - Baja - Modificacion Producto */
+                case 'addProduct':
+                    $controller = new ProductoController();
+                    $controller->showAddProduct();
+                    break;
+                case 'addProductDB':
+                    $controller = new ProductoController();
+                    $controller->insertProduct();
+                case 'remover':
+                    $controller = new ProductoController();
+                    $controller->removeProduct($valueParameter);
+                    break;
+                case 'editar':
+                    $controller = new ProductoController();
+                    $controller->editProduct($valueParameter);
+                    break;
+                case 'confirmarEditarProducto':
+                    $controller = new ProductoController();
+                    $controller->updateProduct($valueParameter);
+                    break;
+            }
             break;
-        case 'informacion-adicional':
-            $controller = new ProductoController();
-            $controller->showAdditionalInformation($valueParameter);
-            break;
+        /* Fabricantes */
         case 'fabricantes':
-            switch($valueParameter) {
+            switch($actionParameter) {
                 default:
                     $controller = new FabricanteController();
                     $controller->showCard();
                     break;
+                case 'informacion-adicional':
+                    $controller = new FabricanteController();
+                    $controller->showInformationFabricante($valueParameter);
+                    break;
+                /* Alta - Baja - Modificacion Fabricante */
                 case 'agregar':
                     $controller = new FabricanteController();
                     $controller->showAddFabricante();
                     break;
                 case 'editar':
                     $controller = new FabricanteController();
-                    $controller->editFabricante($arrParams[2]);
+                    $controller->editFabricante($valueParameter);
                     break;
-                case 'informacion-adicional':
-                    $controller = new FabricanteController();
-                    //logica
-                    break;
+                
                 case 'confirmar-add-fabricante':
                     $controller = new FabricanteController();
                     $controller->insertFabricante();
                     break;
                 case 'confirmar-editar-fabricante':
                     $controller = new FabricanteController();
-                    $controller->updateFabricante($arrParams[2]);
+                    $controller->updateFabricante($valueParameter);
+                    break;
+                case 'removerFabricante':
+                    $controller = new FabricanteController();
+                    $controller->removeFabricante($valueParameter);
                     break;
             }
             break;
@@ -65,27 +101,6 @@
         case 'logout':
             $controller = new AuthController();
             $controller->logout();
-            break;
-        /* Alta - Baja - Modificacion Producto */
-        case 'addProduct':
-            $controller = new ProductoController();
-            $controller->showAddProduct();
-            break;
-        case 'addProductDB':
-            $controller = new ProductoController();
-            $controller->insertProduct();
-        case 'remover':
-            $controller = new ProductoController();
-            $controller->removeProduct($valueParameter);
-            break;
-        case 'editar':
-            $controller = new ProductoController();
-            $controller->editProduct($valueParameter);
-            break;
-        /* Alta - Baja - Modificacion Fabricante */
-        case 'removerFabricante':
-            $controller = new FabricanteController();
-            $controller->removeFabricante($valueParameter);
             break;
         }
 

@@ -13,8 +13,8 @@
 
        
 
-        public function showModal() {
-            require_once './templates/modal.template.phtml';
+        public function showErrorModal($msgError) {
+            require_once './templates/error.modal.template.phtml';
         }
 
         public function showAddFabricante() {
@@ -23,6 +23,10 @@
 
         public function showEditFabricante($fabricante) {
             require_once './templates/form.edit.fabricante.template.phtml';
+        }
+
+        public function showInformationFabricante($fabricante) {
+            require_once './templates/information.fabricante.template.phtml';
         }
     }
 

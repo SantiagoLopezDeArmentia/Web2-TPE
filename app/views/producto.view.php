@@ -34,8 +34,12 @@
 
         }
 
-        public function showEditProduct($product) {
+        public function showEditProduct($product,$fabricantes) {
             require_once './templates/form.edit.product.template.phtml';
+        }
+
+        public function showError($msgError) {
+            require_once './templates/error.modal.template.phtml';
         }
     }
 
