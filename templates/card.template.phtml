@@ -10,7 +10,7 @@
             <p class="card-text">Precio: <?= $product->precio ?> </p>
             <p class="card-text">Moneda: <?= $product->moneda ?> </p>
             <!--<a href="informacion-adicional/<?= $id_producto ?>" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Mas información</a>-->
-            <a href="productos/informacion-adicional/<?= $id_producto ?>" class="btn btn-primary" >Mas información</a>
+            <a href="productos/informacionAdicional/<?= $id_producto ?>" class="btn btn-primary" >Mas información</a>
             
             <!--  Si la sesion no existe, se visualiza el boton  de ' [ editar / remover ] '-->
             <?php if(isset($_SESSION['USER_ID'])): ?>

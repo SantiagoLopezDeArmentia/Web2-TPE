@@ -28,16 +28,16 @@
                     $controller = new ProductoController();
                     $controller->showProducts($actionParameter);
                     break;
-                case 'informacion-adicional':
+                case 'informacionAdicional':
                     $controller = new ProductoController();
                     $controller->showAdditionalInformation($valueParameter);
                     break;
                 /* Alta - Baja - Modificacion Producto */
-                case 'addProduct':
+                case 'agregar':
                     $controller = new ProductoController();
                     $controller->showAddProduct();
                     break;
-                case 'addProductDB':
+                case 'confirmarAgregarProducto':
                     $controller = new ProductoController();
                     $controller->insertProduct();
                 case 'remover':
@@ -61,7 +61,7 @@
                     $controller = new FabricanteController();
                     $controller->showCard();
                     break;
-                case 'informacion-adicional':
+                case 'informacionAdicional':
                     $controller = new FabricanteController();
                     $controller->showInformationFabricante($valueParameter);
                     break;
@@ -74,12 +74,11 @@
                     $controller = new FabricanteController();
                     $controller->editFabricante($valueParameter);
                     break;
-                
-                case 'confirmar-add-fabricante':
+                case 'confirmarAgregarFabricante':
                     $controller = new FabricanteController();
                     $controller->insertFabricante();
                     break;
-                case 'confirmar-editar-fabricante':
+                case 'confirmarEditarFabricante':
                     $controller = new FabricanteController();
                     $controller->updateFabricante($valueParameter);
                     break;
