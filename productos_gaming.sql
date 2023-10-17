@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2023 at 01:46 AM
+-- Generation Time: Oct 18, 2023 at 01:08 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -34,6 +34,17 @@ CREATE TABLE `fabricantes` (
   `contacto` varchar(85) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `fabricantes`
+--
+
+INSERT INTO `fabricantes` (`id_fabricante`, `fabricante`, `pais_origen`, `contacto`) VALUES
+(1, 'Logitech', 'Noruega', 'Los Loros 1111'),
+(3, 'Gigabyte', 'London', 'Santa Monica 1234'),
+(5, 'Razer', 'EE. UU', 'Av. Loro 1556'),
+(10, 'Sony', 'EE. UU', 'St. Bermuz 5589'),
+(11, 'GX', 'Rusia', 'Guatemala 6.');
+
 -- --------------------------------------------------------
 
 --
@@ -49,6 +60,35 @@ CREATE TABLE `productos` (
   `precio` double NOT NULL,
   `moneda` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `productos`
+--
+
+INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `id_fabricante`, `ruta_imagen`, `precio`, `moneda`) VALUES
+(1, 'Logitech Mouse G604', 'Resumen', 1, './img_productos/screenshot_87.png', 45000, 'ARG'),
+(17, 'Pad', 'Pad ultra slim con tela ergonomica.', 5, 'img_productos/screenshot_238.png', 35000, 'ARG'),
+(19, 'Monitor Gigabyte G27FC', 'Monitor 4K Ultra Slim para que tus partidas las ganes .', 3, 'img_productos/screenshot_220.png', 150, 'USD'),
+(20, 'PS5', 'Play Station 5. Consola de ultima generacion.', 10, 'img_productos/screenshot_252.png', 750000, 'ARG');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id_usuario` int(11) NOT NULL,
+  `usuario` varchar(35) NOT NULL,
+  `contrasenia` varchar(265) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `usuario`, `contrasenia`) VALUES
+(1, 'webadmin', '$2y$10$fWCpma7Qv0gaKuLN8VBQZOTdy.fHcnZGG/ZDf8vLH25GNikC8C7LC');
 
 --
 -- Indexes for dumped tables
@@ -68,6 +108,12 @@ ALTER TABLE `productos`
   ADD KEY `fw_productos_fabricantes` (`id_fabricante`);
 
 --
+-- Indexes for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -75,13 +121,19 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT for table `fabricantes`
 --
 ALTER TABLE `fabricantes`
-  MODIFY `id_fabricante` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_fabricante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
