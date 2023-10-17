@@ -9,7 +9,7 @@
         }
 
         public function showError($msgError) {
-            require_once './templates/error.msg.template.phtml';
+            require_once './templates/error.msg.fabricantes.template.phtml';
         }
 
         public function showAddFabricante() {
