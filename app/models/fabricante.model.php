@@ -10,7 +10,6 @@
         // Constructor
 
         public function __construct() {
-            //$this->dataBase = new PDO('mysql:host=localhost;dbname=productos_gaming;charset=utf8', 'root', '');
             //$this->dataBase = new PDO('mysql:host='.HOST.';dbname='.DATA_BASE_NAME.';charset=utf8', USER, PASSWORD);
             $this->dataBase = new PDO(sprintf(CONNECTION_STRING, HOST, DATA_BASE_NAME), USER, PASSWORD);
         }

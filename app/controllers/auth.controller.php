@@ -43,7 +43,6 @@
             if ($userData && password_verify($password, $userData->contrasenia)) {
                 // Rederigir a la pagina principal del sitio
                 AuthHelper::login($userData);
-                //AuthHelper::verify();
                 header('Location: ' . BASE_URL);
                 
             } else {

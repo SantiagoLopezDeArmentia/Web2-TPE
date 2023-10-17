@@ -20,13 +20,6 @@
         
         // Comportamiento
 
-        /* 
-        public function getFabricantes() {
-            $fabricantes = $this->fabricanteModel->getAllFabricantes();
-            return $fabricantes;
-        }*/
-
-
         public function showCard() {
             $fabricantes = $this->fabricanteModel->getAllFabricantes();
             $this->fabricanteView->showAllFabricantes($fabricantes);
@@ -55,7 +48,6 @@
             $fabricantePais = $_POST['pais-origen'];
             $fabricanteContacto = $_POST['contacto'];
           
-            //if (isset($fabricanteName) && isset($fabricantePais) && isset($fabricanteContacto)) {
             if (!empty($fabricanteName) && !empty($fabricantePais) && !empty($fabricanteContacto)) {
                 $this->fabricanteModel->insertFabricante($fabricanteName, $fabricantePais, $fabricanteContacto);
                 NavHelper::NavFabricantes();

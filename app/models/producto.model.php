@@ -10,8 +10,6 @@
         // Constructor
 
         public function __construct() {
-            //$this->dataBase = new PDO('mysql:host=localhost;dbname=productos_gaming;charset=utf8', 'root', '');
-            //$this->dataBase = new PDO('mysql:host='.HOST.';dbname='.DATA_BASE_NAME.';charset=utf8', USER, PASSWORD);
             $this->dataBase = new PDO(sprintf(CONNECTION_STRING, HOST, DATA_BASE_NAME), USER, PASSWORD);
         }
         
@@ -19,7 +17,6 @@
 
         /* Obtener todos los productos */
         function getAllProducts(){
-            //$query = $this->dataBase->prepare('SELECT * FROM productos');
             $query = $this->dataBase->prepare('SELECT *, F.fabricante 
                                             FROM productos P 
                                             JOIN fabricantes F 
@@ -39,7 +36,6 @@
         
         /* Obtener productos por fabricante. */
         public function getProductsbyFabricante($id_fabricante){
-            //$query = $this->dataBase->prepare('SELECT * FROM productos WHERE id_fabricante = ? ');
             $query = $this->dataBase->prepare('SELECT *, F.fabricante 
                                             FROM productos P 
                                             JOIN fabricantes F 

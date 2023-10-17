@@ -5,13 +5,8 @@
 
 
         public function showAllFabricantes($fabricantes) {
-                //require_once './templates/card.template.phtml';
                 require_once './templates/grid.card.fabricantes.template.phtml';
-            }
-        
-
-
-       
+        }
 
         public function showErrorModal($msgError) {
             require_once './templates/error.msg.fabricante.template.phtml';
