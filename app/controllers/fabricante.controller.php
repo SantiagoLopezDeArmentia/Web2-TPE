@@ -76,7 +76,7 @@
 
             if (!empty($fabricanteName) && !empty($fabricantePais) && !empty($fabricanteContacto)) {
                 $this->fabricanteModel->updateFabricante($fabricanteName, $fabricanteContacto, $fabricantePais, $fabricanteID);
-                NavHelper::NavHome();
+                NavHelper::NavFabricantes();
             } else {
                 $this->fabricanteView->showError('No es posible insertar fabricante. Corroborrar la informacion.');
             }
