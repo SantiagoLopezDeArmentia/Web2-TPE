@@ -21,7 +21,7 @@
         }
 
         public function showError($msgError) {
-            require_once './templates/error.msg.product.template.phtml';
+            require_once './templates/error.msg.template.phtml';
         }
     }
 

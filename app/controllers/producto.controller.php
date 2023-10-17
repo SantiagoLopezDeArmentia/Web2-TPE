@@ -64,11 +64,6 @@
             $this->productoView->showProduct($products, $fabricantes);
         }
 
-        /*public function showProductInformation($id) {
-            $product = $this->productoModel->getProductByID($id);
-            $this->productoView->showProductInformation($product);
-        }*/
-
         /* Agregar un producto a la base de datos. */
         public function insertProduct() {
             
@@ -88,12 +83,14 @@
 
         /* Remover un producto de la base de datos. */
         public function removeProduct($id) {
+            AuthHelper::verify();
             $this->productoModel->removeProduct($id);
             NavHelper::NavHome();
         }
 
         /* Editar un producto. */
         public function editProduct($id) {
+            AuthHelper::verify();
             $product = $this->productoModel->getProductByID($id);
             $fabricantes = $this->getAllFabricantes();
             $this->productoView->showEditProduct($product, $fabricantes);

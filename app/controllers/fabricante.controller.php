@@ -38,7 +38,7 @@
                 NavHelper::NavFabricantes();
             } catch (Exception $e) {
                 /* Mostrar alerta de error. */
-                $this->fabricanteView->showErrorModal('No se pudo remover el fabricante.');
+                $this->fabricanteView->showError('No se pudo remover el fabricante.');
             }
         }
 
@@ -52,11 +52,11 @@
                 $this->fabricanteModel->insertFabricante($fabricanteName, $fabricantePais, $fabricanteContacto);
                 NavHelper::NavFabricantes();
             } else {
-                $this->fabricanteView->showErrorModal('No es posible insertar fabricante. Corroborrar la informacion.');
+                $this->fabricanteView->showError('No es posible insertar fabricante. Corroborrar la informacion.');
             }
             
         }
-
+        
         /* Mostrar vista de edicion de fabricante. */
         public function editFabricante($id) {
             $fabricante = $this->fabricanteModel->getFabricanteByID($id);
@@ -78,7 +78,7 @@
                 $this->fabricanteModel->updateFabricante($fabricanteName, $fabricanteContacto, $fabricantePais, $fabricanteID);
                 NavHelper::NavHome();
             } else {
-                $this->fabricanteView->showErrorModal('No es posible insertar fabricante. Corroborrar la informacion.');
+                $this->fabricanteView->showError('No es posible insertar fabricante. Corroborrar la informacion.');
             }
 
             

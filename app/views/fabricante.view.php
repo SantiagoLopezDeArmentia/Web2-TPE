@@ -8,8 +8,8 @@
                 require_once './templates/grid.card.fabricantes.template.phtml';
         }
 
-        public function showErrorModal($msgError) {
-            require_once './templates/error.msg.fabricante.template.phtml';
+        public function showError($msgError) {
+            require_once './templates/error.msg.template.phtml';
         }
 
         public function showAddFabricante() {
