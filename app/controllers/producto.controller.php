@@ -47,7 +47,7 @@
         /*  Mostrar informacion adicional. */
         public function showAdditionalInformation($id) {
             $product = $this->productoModel->getProductByID($id);
-            $this->productoView->showModal($product);
+            $this->productoView->showProductInformation($product);
         }
 
         /*  Mostrar formulario para agregar productos */
@@ -64,10 +64,10 @@
             $this->productoView->showProduct($products, $fabricantes);
         }
 
-        public function showProductInformation($id) {
+        /*public function showProductInformation($id) {
             $product = $this->productoModel->getProductByID($id);
             $this->productoView->showProductInformation($product);
-        }
+        }*/
 
         /* Agregar un producto a la base de datos. */
         public function insertProduct() {

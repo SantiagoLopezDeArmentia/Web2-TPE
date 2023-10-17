@@ -8,16 +8,12 @@
             require_once './templates/grid.card.product.template.phtml';
         }
 
-        public function showModal($product) {
+        public function showProductInformation($product) {
             require_once './templates/information.product.template.phtml';
         }
 
         public function showAddProduct($fabricantes) {
             require_once './templates/form.add.product.template.phtml';
-        }
-
-        public function showProductInformation($product) {
-
         }
 
         public function showEditProduct($product,$fabricantes) {
