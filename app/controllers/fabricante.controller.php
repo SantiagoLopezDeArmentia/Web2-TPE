@@ -51,8 +51,18 @@
 
         /* Insertar fabricante en la base de datos. */
         public function insertFabricante() {
-            $this->fabricanteModel->insertFabricante();
-            NavHelper::NavFabricantes();
+            $fabricanteName = $_POST['fabricante'];
+            $fabricantePais = $_POST['pais-origen'];
+            $fabricanteContacto = $_POST['contacto'];
+          
+            //if (isset($fabricanteName) && isset($fabricantePais) && isset($fabricanteContacto)) {
+            if (!empty($fabricanteName) && !empty($fabricantePais) && !empty($fabricanteContacto)) {
+                $this->fabricanteModel->insertFabricante($fabricanteName, $fabricantePais, $fabricanteContacto);
+                NavHelper::NavFabricantes();
+            } else {
+                $this->fabricanteView->showErrorModal('No es posible insertar fabricante. Corroborrar la informacion.');
+            }
+            
         }
 
         /* Mostrar vista de edicion de fabricante. */
@@ -66,8 +76,20 @@
 
         /* Actualizar fabricante en la base de datos. */
         public function updateFabricante($id) {
-            $this->fabricanteModel->updateFabricante($id);
-            NavHelper::NavHome();
+
+            $fabricanteName = $_POST['fabricante'];
+            $fabricanteContacto = $_POST['contacto'];
+            $fabricantePais = $_POST['pais-origen'];
+            $fabricanteID = $id;
+
+            if (!empty($fabricanteName) && !empty($fabricantePais) && !empty($fabricanteContacto)) {
+                $this->fabricanteModel->updateFabricante($fabricanteName, $fabricanteContacto, $fabricantePais, $fabricanteID);
+                NavHelper::NavHome();
+            } else {
+                $this->fabricanteView->showErrorModal('No es posible insertar fabricante. Corroborrar la informacion.');
+            }
+
+            
         }
 
         /* Mostrar informacion adicional del fabricante. */

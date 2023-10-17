@@ -39,7 +39,7 @@
         }
 
         public function showError($msgError) {
-            require_once './templates/error.modal.template.phtml';
+            require_once './templates/error.msg.product.template.phtml';
         }
     }
 

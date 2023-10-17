@@ -14,7 +14,7 @@
        
 
         public function showErrorModal($msgError) {
-            require_once './templates/error.modal.template.phtml';
+            require_once './templates/error.msg.fabricante.template.phtml';
         }
 
         public function showAddFabricante() {
