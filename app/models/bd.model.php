@@ -17,7 +17,7 @@
             $query = $this->dataBase->query('SHOW TABLES');
             $tables = $query->fetchAll(); // Nos devuelve todas las tablas de la db
             if(count($tables)==0) {
-
+                $this->createDataBase();
                 // Si no hay crearlas
                 $sql =<<<END
                 -- phpMyAdmin SQL Dump
