@@ -37,7 +37,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `productos_gaming`
 --
-
+CREATE DATABASE `productos_gaming`;
 -- --------------------------------------------------------
 
 --
