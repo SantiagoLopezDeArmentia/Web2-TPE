@@ -1,18 +1,18 @@
 <?php
     require_once './app/configurations/config.php';
-
-    class FabricanteModel {
+    require_once './app/models/bd.model.php';
+    class FabricanteModel extends Model{
 
         // Atributos
 
-        private $dataBase;
+       // private $dataBase;
 
         // Constructor
 
-        public function __construct() {
+        /*public function __construct() {
             //$this->dataBase = new PDO('mysql:host='.HOST.';dbname='.DATA_BASE_NAME.';charset=utf8', USER, PASSWORD);
             $this->dataBase = new PDO(sprintf(CONNECTION_STRING, HOST, DATA_BASE_NAME), USER, PASSWORD);
-        }
+        }*/
         
         // Comportamiento
 
