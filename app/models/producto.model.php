@@ -1,17 +1,17 @@
 <?php
     require_once './app/configurations/config.php';
-
-    class ProductoModel {
+    require_once './app/models/bd.model.php';
+    class ProductoModel extends Model{
 
         // Atributos
 
-        private $dataBase;
+        //private $dataBase;
 
         // Constructor
 
-        public function __construct() {
+       /* public function __construct() {
             $this->dataBase = new PDO(sprintf(CONNECTION_STRING, HOST, DATA_BASE_NAME), USER, PASSWORD);
-        }
+        }*/
         
         // Comportamiento
 
