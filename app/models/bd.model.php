@@ -1,16 +1,16 @@
 <?php
     require_once './app/configurations/config.php';
     class Model {
-        protected $db;
+        protected $dataBase;
 
         function __construct() {
-            $this->db = new PDO(sprintf(CONNECTION_STRING, HOST, DATA_BASE_NAME), USER, PASSWORD);
+            $this->dataBase = new PDO(sprintf(CONNECTION_STRING, HOST, DATA_BASE_NAME), USER, PASSWORD);
             $this->deploy();
         }
 
         function deploy() {
             // Chequear si hay tablas
-            $query = $this->db->query('SHOW TABLES');
+            $query = $this->dataBase->query('SHOW TABLES');
             $tables = $query->fetchAll(); // Nos devuelve todas las tablas de la db
             if(count($tables)==0) {
                 // Si no hay crearlas
@@ -90,7 +90,7 @@ COMMIT;
                     
 
 END;
-                        $this->bd->query($sql);
+                        $this->dataBase->query($sql);
             }
         }
 
