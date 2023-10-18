@@ -11,7 +11,7 @@
 
     function createDataBase() {
       $db = new PDO(sprintf(CONNECTION_STRING_CREATE_DATA_BASE, HOST), USER, PASSWORD);
-      $db->exec('CREATE DATABASE IF NOT EXIST' . DATA_BASE_NAME);
+      $db->exec('CREATE DATABASE IF NOT EXISTS ' . DATA_BASE_NAME);
     }
 
     function deploy() {
