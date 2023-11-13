@@ -33,15 +33,28 @@
 
             if (!$fabricante) {
                 $products = $this->getProducts();
+                $products = $this->changeImagePath($products);
                 $this->productoView->showProduct($products, $fabricantes);
             } else {
                 require_once './app/models/fabricante.model.php';
                 $fabricanteModel = new FabricanteModel();
                 $fabricante = $fabricanteModel->getFabricanteByName($fabricante);
                 $products = $this->productoModel->getProductsbyFabricante($fabricante->id_fabricante);
+                
+                $products = $this->changeImagePath($products);
+                
                 $this->productoView->showProduct($products, $fabricantes);
             }
             
+        }
+
+        private function changeImagePath($products) {
+            foreach ($products as $product) {
+                if (!file_exists($product->ruta_imagen)) {
+                    $product->ruta_imagen = IMG_FOLDER_PATH . DEFAULT_IMG_PRODUCT;
+                }
+            }
+            return $products;
         }
 
         /*  Mostrar informacion adicional. */
@@ -138,7 +151,8 @@
 
         private function manageProductPOST() {
             
-            if (empty($_POST['name']) || empty($_POST['description']) || empty($_POST['price']) || empty($_POST['currency']) || strlen($_FILES['input_name']['tmp_name'])==0 || empty($_POST['fabricante'])) {
+            if (empty($_POST['name']) || empty($_POST['description']) ||
+            empty($_POST['price']) || empty($_POST['currency']) || empty($_POST['fabricante'])) {
                 // MOSTRAR ERROR
                 $this->productoView->showError('No es posible agregar/actualizar el producto, este contiene campos vacios.');
                 die();
@@ -151,11 +165,18 @@
                 $fabricanteID = $_POST['fabricante'];
             }
 
-            /* Armar ruta completa del archivo */
-            $fullPathFile = IMG_FOLDER_PATH . $fileName; 
+            /* Imagen que se debe utilizar. */
+            if (empty($fileName)) {
+                $fullPathFile = IMG_FOLDER_PATH . DEFAULT_IMG_PRODUCT;
+            } else {
+                /* Armar ruta completa del archivo */
+                $fullPathFile = IMG_FOLDER_PATH . $fileName; 
 
-            /* Mover archivo a la carpeta local del proyecto */
-            move_uploaded_file($_FILES["input_name"]["tmp_name"], $fullPathFile); 
+                /* Mover archivo a la carpeta local del proyecto */
+                move_uploaded_file($_FILES["input_name"]["tmp_name"], $fullPathFile); 
+            }
+
+            
 
             /* Retornar todos los datos del producto. */
             return ['name' => $productName,

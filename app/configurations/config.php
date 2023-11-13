@@ -11,5 +11,8 @@
     /* Ruta definida para guardar las imagenes al momento de ingresar un producto. */
     define("IMG_FOLDER_PATH", 'img_productos/');
 
+    /* Imagen por default que se colocara en los productos que al momento de su creacion,
+    no se le brinde imagen. */
+    define("DEFAULT_IMG_PRODUCT", 'default.png');
 
 ?>
